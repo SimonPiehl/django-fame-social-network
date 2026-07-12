@@ -36,8 +36,4 @@ Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 python manage.py test
 ```
 
-## Background & License
-
-Developed as part of the *Big Data Engineering* course at Saarland University (Summer 2026), supervised by Prof. Dr. Jens Dittrich.
-
 The project scaffold (base models, authentication, basic timeline) is © Prof. Dr. Jens Dittrich, Saarland University, licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). All feature implementations (T1–T8) were written by me.
