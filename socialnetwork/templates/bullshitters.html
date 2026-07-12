@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Bullshitters{% endblock %}
+
+{% block body %}
+
+<br>
+<h3 style="margin-left: 40px">Bullshitters</h3>
+<br>
+
+{% for group in bullshitters %}
+<div class="card" style="margin-bottom: 30px; margin-left: 40px; margin-right: 40px;">
+    <!-- T6: Display the expertise area label as the group heading -->
+    <h5 style="margin-bottom: 15px;">
+     <i class="fa-solid fa-triangle-exclamation" style="color: red;"></i>
+        &nbsp;{{ group.area.label }}
+    </h5>
+    <table class="table table-sm table-hover" style="margin-bottom: 0;">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>User</th>
+                <th>Email</th>
+                <th>Fame Level (numeric)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- T6: Iterate over all users with negative fame in this expertise area.-->
+            {% for entry in group.users %}
+            <tr>
+                <td style="color: gray;">{{ forloop.counter }}</td>
+                <td>
+                    <!-- T6: Link to the fame profile of the bullshitter -->
+                    <a href="/fame/html/fame?userid={{ entry.user.id }}">
+                        {{ entry.user.first_name }} {{ entry.user.last_name }}
+                    </a>
+                </td>
+                <td style="color: gray;">{{ entry.user.email }}</td>
+                <td>
+                    <!-- T6: Display the numeric fame level with bullshit styling -->
+                    <span class="bullshit" style="padding: 2px 8px;">
+                        {{ entry.fame_level_numeric }}
+                    </span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% empty %}
+<!-- T6: Shown when no bullshitters exist in any expertise area -->
+<div class="card" style="margin-left: 40px; margin-right: 40px;">
+    <p style="color: gray;">No bullshitters found.</p>
+</div>
+{% endfor %}
+
+<br><br>
+
+{% endblock %}

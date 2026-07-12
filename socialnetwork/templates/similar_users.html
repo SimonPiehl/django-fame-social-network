@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Similar Users{% endblock %}
+
+{% block body %}
+
+<br>
+<h3 style="margin-left: 40px">Similar Users</h3>
+<br>
+
+<!-- T8: Table showing all users with a non-zero similarity score to the logged-in user.
+     Users are ranked by similarity score (descending), ties broken by date_joined (most recent first).
+     The similarity score is computed by api.similar_users() and passed to this template by the view. -->
+<div class="card" style="margin-left: 40px; margin-right: 40px; margin-bottom: 20px;">
+    <table class="table table-sm table-hover" style="margin-bottom: 0;">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>User</th>
+                <th>Email</th>
+                <th>Similarity Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- T8: Iterate over context["similar_users"] -->
+            {% for user in similar_users %}
+            <tr>
+                <td style="color: gray;">{{ forloop.counter }}</td>
+                <td>
+                    <!-- T8: Link to the fame profile of the similar user -->
+                    <a href="/fame/html/fame?userid={{ user.id }}">
+                        {{ user.first_name }} {{ user.last_name }}
+                    </a>
+                </td>
+                <td style="color: gray;">{{ user.email }}</td>
+                <td>
+                    <!-- T8: Display similarity score rounded to 2 decimal places -->
+                    <span class="ok" style="padding: 2px 8px;">
+                        {{ user.similarity|floatformat:2 }}
+                    </span>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <!-- T8: Shown when no similar users exist for the logged-in user -->
+                <td colspan="4" style="color: gray;">No similar users found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<br><br>
+
+{% endblock %}
