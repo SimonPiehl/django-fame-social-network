@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/29946927/README.md)
 # Fame Social Network
 
 Django-based social network that integrates a **skill-based reputation system** to combat misinformation — users who post bullshit in areas where they claim expertise face automatic fame penalties, community removal, or permanent bans. Developed as part of the Big Data Engineering course at Saarland University.
