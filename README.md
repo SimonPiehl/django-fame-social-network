@@ -15,7 +15,7 @@ Django-based social network that integrates a **skill-based reputation system** 
 
 ## Tech Stack
 
-Python · Django · Django REST Framework · SQLite · pipenv
+Python · Django · SQLite · HTML
 
 ## Installation
 
